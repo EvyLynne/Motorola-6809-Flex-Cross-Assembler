@@ -140,6 +140,31 @@ addressing plus data pseudo-ops was assembled by both builds in all three
 output formats; outputs were compared byte-for-byte and every S-record and
 Intel Hex checksum was independently recomputed.
 
+## AI-Assisted Development
+
+This modernization was carried out in collaboration with **Claude**
+(Anthropic), used as a pair-programming and research assistant under human
+direction. The division of labor, for transparency:
+
+- **Claude performed:** identification of the source fragments as Benschop's
+  a09 and location of the complete original in the sbc09 repository;
+  reconstruction of the missing structures, opcode table, and globals;
+  the C17 remediation and warning cleanup; discovery of the `hexbuffer[16]`
+  overflow; assembly of both build layouts; and the automated verification
+  (compile testing on GCC 13, functional testing in all three output formats,
+  independent checksum recomputation, byte-identical comparison of the two
+  builds)
+- **Human-directed:** the requirement set (target standard, cross-compiler
+  environment, dual build layouts), the preserve-and-correct policy that kept
+  legacy behavior bug-for-bug instead of rewriting it, review of the
+  deliverables, and final build verification on the target Windows/MinGW-w64
+  toolchain
+
+All AI-produced code was derived from, and remains under the license of, the
+original GPL v2 source. Preserved quirks and every behavioral change are
+documented in the source file headers and in "The Modernization" above, so
+the full change history is auditable independent of how it was produced.
+
 ## Provenance & License
 
 - Original: **a09** by **L.C. (Lennart) Benschop**, posted to Usenet
@@ -155,4 +180,3 @@ Intel Hex checksum was independently recomputed.
 Lennart Benschop, for a compact and readable assembler that still teaches
 recursive-descent parsing three decades on, and the sbc09 maintainers for
 keeping the source available.
-
