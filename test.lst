@@ -1,0 +1,18 @@
+0000:                         org $100
+0100: 10CE0400        start   lds #$400
+0104: C661                    ldb #'a
+0106: 8E0114          loop    ldx #data
+0109: 8605                    lda #5
+010B: 5F                      clrb
+010C: EB80            loop2   addb ,x+
+010E: 4A                      deca
+010F: 26FB                    bne loop2
+0111: C10F                    cmpb #15
+0113: 3F                      swi
+0114: 0102030405      data    fcb 1,2,3,4,5
+0119: 1234                    fdb $1234
+011B: 4849                    fcc "HI"
+011D:                         end
+
+SYMBOL TABLE
+      DATA 02 0114      LOOP 02 0106     LOOP2 02 010c     START 02 0100
